@@ -15,6 +15,11 @@ const App = () => {
       .then(flow => {
         console.log("preview rendered, total pages", flow.total, { flow });
       });
+    return () => {
+      document.head
+        .querySelectorAll('[data-pagedjs-inserted-styles]')
+        .forEach((e) => e.parentNode?.removeChild(e))
+    }
   }, []);
   return <Book />;
 };
